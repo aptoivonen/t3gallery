@@ -26,7 +26,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        <body>
+        <body className="dark">
           <div className="grid h-screen grid-rows-[auto,_1fr]">
             <TopNav />
             <main className="overflow-y-scroll">{children}</main>
