@@ -4,6 +4,7 @@ import "server-only";
 import { db } from "~/server/db";
 import { images } from "./db/schema";
 import { redirect } from "next/navigation";
+import analyticsServerClient from "./analytics";
 
 export async function getMyImages() {
   const user = auth();
@@ -39,6 +40,13 @@ export async function deleteImage(id: number) {
   await db
     .delete(images)
     .where(and(eq(images.id, id), eq(images.userId, user.userId)));
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  analyticsServerClient.capture({
+    distinctId: user.userId,
+    event: "Deleted Image",
+    properties: { imageId: id },
+  });
 
   redirect("/");
 }
