@@ -13,6 +13,7 @@ export default async function FullPageImageView(props: { id: number }) {
         <img
           src={image.url}
           className="max-h-full flex-shrink object-contain"
+          alt={`${props.id} user uploaded image`}
         />
       </div>
       <div className="flex w-48 flex-col border-l">
