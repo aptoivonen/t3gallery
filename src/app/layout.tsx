@@ -32,7 +32,7 @@ export default function RootLayout({
           <body className="dark">
             <div className="grid h-screen grid-rows-[auto,_1fr]">
               <TopNav />
-              <main className="overflow-y-scroll">{children}</main>
+              <main className="overflow-y-auto">{children}</main>
             </div>
             {modal}
             <div id="modal-root"></div>
